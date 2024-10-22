@@ -28,7 +28,7 @@ Route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
 
-Route::middleware(['auth','admin'])->prefix('admin')->as('admin.')->group(function () {
+Route::prefix('admin')->as('admin.')->group(function () {
     // Route::get('/', function () {
     //     return view('admin.index');
     // })->name('index');

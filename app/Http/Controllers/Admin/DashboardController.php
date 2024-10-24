@@ -11,13 +11,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Lấy tổng số sản phẩm
+       
         $totalBooks = Book::count();
 
-        // Lấy tổng số sản phẩm của mỗi danh mục
+      
         $categories = Category::withCount('books')->get();
-// dd($categories->toArray());
-        // Lấy tổng lượt xem (giả sử bạn có trường views trong model Product)
+
         $totalViews = Book::sum('views');
 
 

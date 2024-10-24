@@ -27,8 +27,11 @@ Route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');
 
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
+Route::get('/googleLogin',[AuthController::class,'googleLogin']);
+Route::get('/auth/google/callback',[AuthController::class,'googleHandle']);
 
-Route::prefix('admin')->as('admin.')->group(function () {
+
+Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     // Route::get('/', function () {
     //     return view('admin.index');
     // })->name('index');

@@ -35,6 +35,7 @@
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Login</button>
                 {{-- <a href="{{ route('register') }}" class="btn btn-info">Register</a> --}}
+                <a href="{{URL::to('googleLogin')}}" class="btn btn-info">Đăng nhập bằng GG</a>
             </div>
 
 

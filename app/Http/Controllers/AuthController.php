@@ -21,11 +21,13 @@ class AuthController extends Controller
 
         $user = $request->only(['email', 'password']);
         // dd($customer);
-        if (Auth::attempt($user)) {
+        if (Auth::attempt($user) && Auth::user()->role === 'admin') {
 
             // $request->session()->regenerate();
 
             return redirect()->route('admin.index');
+        } else if (Auth::attempt($user) && Auth::user()->role === 'user') {
+            return redirect()->route('client.index');
         } else {
             return redirect()->back()->with('message', 'Email hoang Password khong ton tai');
         }
@@ -48,34 +50,34 @@ class AuthController extends Controller
 
             $findUser = User::where('email', $user->email)->first();
 
-            if(!$findUser){
+            if (!$findUser) {
                 $newUser = new User;
                 $newUser->name = $user->name;
                 $newUser->email = $user->email;
                 $newUser->avatar = $user->avatar;
                 $newUser->password = "12345";
-                $newUser->role = "admin";
+                $newUser->role = "user";
                 $newUser->is_active = "1";
                 $newUser->address = "BN";
                 $newUser->phone = "0123456789";
                 $newUser->save();
                 auth()->login($newUser, true);
-            }else{
+            } else {
                 auth()->login($findUser, true);
             }
 
             // session()->put('id', $findUser->id);
             // session()->put('role', $findUser->role);
 
-           
 
-          
+
+
             return redirect()->route('admin.index');
         } catch (Exception $e) {
             dd($e->getMessage());
         }
 
-       
+
     }
 
 

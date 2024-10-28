@@ -5,68 +5,34 @@
 
         <div class="container">
             <div class="row">
-                {{-- <div class="col-md-12">
 
-                    <button class="prev slick-arrow">
-                        <i class="icon icon-arrow-left"></i>
-                    </button>
-
-                    <div class="main-slider pattern-overlay">
-                        <div class="slider-item">
-                            <div class="banner-content">
-                                <h2 class="banner-title">Life of the Wild</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
-                                    ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
-                                    urna, a eu.</p>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i
-                                            class="icon icon-ns-arrow-right"></i></a>
-                                </div>
-                            </div><!--banner-content-->
-                            <img src="/client/images/main-banner1.jpg" alt="banner" class="banner-image">
-                        </div><!--slider-item-->
-
-                        <div class="slider-item">
-                            <div class="banner-content">
-                                <h2 class="banner-title">Birds gonna be Happy</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
-                                    ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
-                                    urna, a eu.</p>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i
-                                            class="icon icon-ns-arrow-right"></i></a>
-                                </div>
-                            </div><!--banner-content-->
-                            <img src="/client/images/main-banner2.jpg" alt="banner" class="banner-image">
-                        </div><!--slider-item-->
-
-                    </div><!--slider-->
-
-                    <button class="next slick-arrow">
-                        <i class="icon icon-arrow-right"></i>
-                    </button>
-
-                </div> --}}
 
                 <div class="col-md-6 mt-3">
-                    <img src="{{ Storage::url($book->thumbnail) }}" alt="Image" width="443px" height="632px" class="img-fluid">
+                    <img src="{{ Storage::url($book->thumbnail) }}" alt="Image" width="443px" height="632px"
+                        class="img-fluid">
                 </div>
 
                 <div class="col-md-6 mt-3">
                     <h2 class="text-black">{{ $book->title }}</h2>
-                    <p>By {{ $book->author}}</p>
+                    <p>By {{ $book->author }}</p>
                     <p class="mb-4">{{ $book->content }}</p>
                     <p><strong class="text-primary h4">${{ $book->price }}</strong></p>
 
-                    <div class="mb-5">
-                        <input type="number" value="1" min="1" width="100px">
-                    </div>
+                    <form action="{{ route('client.addToCart') }}" method="post">
+                        @csrf
+                        <div class="mb-5">
+                            <input type="number" name="quantity" class="form-control w-25" value="1" min="1"
+                                max="{{ $book->quantity }}" width="100px">
+                        </div>
+                        <input type="hidden" name="id" value="{{ $book->id }}">
+                        <p>
+                            <button type="submit" name="addToCart" href="cart.html" class="buy-now btn btn-sm btn-primary"
+                                style="height: 60px">Add To Cart</button>
 
-                    <p>
-                        <a href="cart.html" class="buy-now btn btn-sm btn-primary">Add To Cart</a>
+                            {{-- <a href="cart.html" class="buy-now btn btn-sm btn-primary">Buy Now</a> --}}
+                        </p>
 
-                        <a href="cart.html" class="buy-now btn btn-sm btn-primary">Buy Now</a>
-                    </p>
+                    </form>
 
 
 

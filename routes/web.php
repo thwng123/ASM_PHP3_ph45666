@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,14 @@ Route::get('popular-book/{id}', [BookController::class, 'popular_book'])->name('
 
 Route::get('search', [BookController::class, 'search'])->name('client.search');
 
+Route::post('/addToCart', [CartController::class, 'addToCart'])->name('client.addToCart')->middleware('auth');
+Route::post('/updateCart', [CartController::class, 'updateCart'])->name('client.updateCart')->middleware('auth');
+Route::get('cart', [CartController::class,'index'])->name('client.cart')->middleware('auth');
+Route::get('deleteCart/{id}', [CartController::class, 'deleteCart'])->name('client.deleteCart')->middleware('auth');
+
+
+
+
 //ADMIN
 
 Route::get('/login',[AuthController::class,'getLogin'])->name('login');
@@ -31,7 +40,7 @@ Route::get('/googleLogin',[AuthController::class,'googleLogin']);
 Route::get('/auth/google/callback',[AuthController::class,'googleHandle']);
 
 
-Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
+Route::middleware(['auth','admin'])->prefix('admin')->as('admin.')->group(function () {
     // Route::get('/', function () {
     //     return view('admin.index');
     // })->name('index');

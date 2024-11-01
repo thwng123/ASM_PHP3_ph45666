@@ -21,6 +21,11 @@
                     <a href="{{route('admin.categories.index')}}" > <i class="menu-icon fa fa-user"></i>Category</a>
                    
                 </li>
+                <li class="menu-item-has-children dropdown">
+
+                    <a href="{{route('admin.orders.index')}}" > <i class="menu-icon fa fa-user"></i>Order</a>
+                   
+                </li>
 
                 <li class="menu-title">Icons</li><!-- /.menu-title -->
 

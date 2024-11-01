@@ -52,6 +52,11 @@
 
     </section>
 
+             @if (session()->has('msg'))
+                <div class="alert alert-success">
+                    {{ session()->get('msg') }}
+                </div>
+            @endif
     <section id="client-holder" data-aos="fade-up">
         <div class="container">
             <div class="row">
@@ -147,9 +152,10 @@
                             @foreach ($offerBooks as $offerBook)
                                 <div class="product-item">
                                     <figure class="product-style">
-                                        <img src="{{ $offerBook->thumbnail }}" alt="Books" class="product-item">
-                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
-                                            Cart</button>
+                                        <img src="{{Storage::url($offerBook->thumbnail)}}" alt="Books" class="product-item">
+                                        {{-- <button type="button" class="add-to-cart"
+                                        data-product-tile="add-to-cart">Add to
+                                        Cart</button> --}}
                                     </figure>
                                     <figcaption>
                                         <h3>{{ $offerBook->title }}</h3>

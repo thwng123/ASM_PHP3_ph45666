@@ -21,6 +21,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $total = 0;
+                        @endphp
                         @foreach ($data as $key => $cartItem)
                             <tr align="center">
                                 <td>{{ $cartItem->title }}</td>
@@ -41,15 +44,41 @@
                                     <a href="{{ route('client.deleteCart', $cartItem->id) }}">X</a>
                                 </td>
                             </tr>
+                            @php
+                                $total += $cartItem->price * $cartItem->quantity;
+                            @endphp
                         @endforeach
                     </tbody>
                     <tfoot>
                         <tr>
                             <th>
-                                {{-- <input type="hidden" name="id" value="{{ $cartItem->id }}"> --}}
-                                <input type="submit" value="Update Cart">
+                                @isset($cartItem)
+                                    <input type="submit" value="Update Cart">
+                                @endisset
+                                {{-- <input type="submit" value="Update Cart"> --}}
                             </th>
-                            {{-- <th><input type="submit" value="Update Cart"></th> --}}
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                            <th>
+
+                                @isset($cartItem)
+                                    <div class="cart_total" style="border: 1px solid gray ;padding:20px; background:#f3f2ec">
+                                        <h3>Cart Total</h3>
+                                        {{-- <div class="subtotal" style="justify-items: center">
+                                        <p>Subtotal <span class="d-flex justify-content-end">$ {{ $total }}</span></p>
+                                    </div> --}}
+                                        <p>Subtotal <span class="float-end">$ {{ $total }}</span></p>
+                                        <p>Total <span class="float-end">$ {{ $total }}</span></p>
+
+                                        <a href="{{ route('client.checkout') }}" style="border: 1px solid; padding:10px"
+                                            class="d-flex justify-content-center">Proceed to checkout</a>
+                                    </div>
+                                @endisset
+
+                            </th>
+
                         </tr>
                     </tfoot>
                 </table>

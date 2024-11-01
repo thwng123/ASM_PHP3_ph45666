@@ -20,23 +20,38 @@
                 </div><!--social-links-->
             </div>
             <div class="col-md-6">
-                <div class="right-element">
+                <div class="float-end" style="align-items: center; display:flex;">
+                    <div class="cart ">
+                        <a href="{{ route('client.cart') }}" class="cart for-buy"><i
+                                class="icon icon-clipboard"></i><span>Cart</span></a>
+                    </div>
+                    {{-- <a href="{{ route('client.cart') }}" class="cart for-buy"><i
+                            class="icon icon-clipboard"></i><span>Cart</span></a>
+ --}}
 
-                    <a href="{{ route('client.cart') }}" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0
-                        $)</span></a>
 
                     @if (Auth::check())
-                        <img class="user-avatar rounded-circle" src="{{ Storage::url(Auth::user()->avatar) }}"
-                            alt="User Avatar" width="80px">
-                            <a href="{{ route('logout') }}"><img src="client/images/logout.png" alt="" width="20px"></a>
+                        <div class="dropdown">
+                            <a class=" " href="#" role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"style="background: #f3f2ec;magrin-bottom:5px">
+                                <img class="user-avatar rounded-circle" src="{{ Storage::url(Auth::user()->avatar) }}"
+                                    alt="User Avatar" width="50px">
+                            </a>
 
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="{{route('myOrders')}}">My Orders</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                            </ul>
+                        </div>
                     @else
                         <a href="{{ route('login') }}" class="user-account for-buy"><i
                                 class="icon icon-user"></i><span>Account</span></a>
                     @endif
 
-                    
-                    
+
+
 
                     <div class="action-menu">
 

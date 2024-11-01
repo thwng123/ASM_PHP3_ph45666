@@ -21,9 +21,9 @@
                                 <div class="product-item">
                                     <figure class="product-style">
                                         <a href="{{route('client.shop-single', $featuredBook->id)}}"><img src="{{ Storage::url($featuredBook->thumbnail) }}" alt="Books" class="product-item"></a>
-                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add
+                                        {{-- <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add
                                             to
-                                            Cart</button>
+                                            Cart</button> --}}
                                     </figure>
                                     <figcaption>
                                         <h3>{{ $featuredBook->title }}</h3>

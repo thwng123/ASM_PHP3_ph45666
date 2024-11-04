@@ -33,17 +33,17 @@
 
                         @if ($item->status == 'Đang chờ xử lý')
                             <a class="btn btn-success mb-3"
-                                href="{{ URL::to('changeOrderStatus/Chấp nhận/' . $item->id) }}">Accept</a>
+                                href="{{ URL::to('changeOrderStatus/Đang xử lý/' . $item->id) }}">Accept</a>
                             <a class="btn btn-danger mb-3"
                                 href="{{ URL::to('changeOrderStatus/Từ chối/' . $item->id) }}">Reject</a>
-                        @elseif($item->status == 'Chấp nhận')
+                        @elseif($item->status == 'Đang xử lý')
                             <a class="btn btn-success mb-3"
-                                href="{{ URL::to('changeOrderStatus/Đã hoàn thành đơn/' . $item->id) }}">Complated</a>
-                        @elseif($item->status == 'Đã hoàn thành đơn')
-                            Đã hoàn thành đơn
+                                href="{{ URL::to('changeOrderStatus/Đã giao/' . $item->id) }}">Complated</a>
+                        @elseif($item->status == 'Đã giao')
+                            Đã giao
                         @else
                             <a class="btn btn-success mb-3"
-                                href="{{ URL::to('changeOrderStatus/Chấp nhận/' . $item->id) }}">Accepted</a>
+                                href="{{ URL::to('changeOrderStatus/Đang xử lý/' . $item->id) }}">Accepted</a>
                         @endif
 
                     </td>

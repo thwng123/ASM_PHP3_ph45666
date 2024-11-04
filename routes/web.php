@@ -52,7 +52,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/googleLogin', [AuthController::class, 'googleLogin']);
 Route::get('/auth/google/callback', [AuthController::class, 'googleHandle']);
 
-
+// Có thể bỏ middleware để vào admin để tạo tài khoàn trong admin
 Route::middleware(['auth', 'admin'])->prefix('admin')->as('admin.')->group(function () {
     // Route::get('/', function () {
     //     return view('admin.index');

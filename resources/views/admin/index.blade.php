@@ -15,7 +15,7 @@
                             <div class="stat-content">
                                 <div class="text-left dib">
                                     <div class="stat-text"><span class="count">{{ $totalBooks }}</span></div>
-                                    <div class="stat-heading">Books</div>
+                                    <div class="stat-heading">Tổng số sách</div>
                                 </div>
                             </div>
                         </div>
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            @foreach ($categories as $cate)
+            {{-- @foreach ($categories as $cate)
                 <div class="col-lg-3 col-md-6">
                     <div class="card">
                         <div class="card-body">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @endforeach --}}
 
             <div class="col-lg-3 col-md-6">
                 <div class="card">
@@ -61,6 +61,96 @@
                 </div>
             </div>
 
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-2">
+                                <i class="pe-7s-cart"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="count">{{ $totalOrders }}</span></div>
+                                    <div class="stat-heading">Tổng đơn hàng</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-2">
+                                <i class="pe-7s-clock"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="count">{{ $pendingOrders }}</span></div>
+                                    <div class="stat-heading">Đang chờ xử lý</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-2">
+                                <i class="pe-7s-box1"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="count">{{ $processingOrders }}</span></div>
+                                    <div class="stat-heading">Đang xử lý</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-2">
+                                <i class="pe-7s-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="count">{{ $completedOrders }}</span></div>
+                                    <div class="stat-heading">Đơn đã giao</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-2">
+                                <i class="pe-7s-close-circle"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="count">{{ $cancelledOrders }}</span></div>
+                                    <div class="stat-heading">Đơn đã huỷ</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 

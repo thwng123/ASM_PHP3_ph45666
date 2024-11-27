@@ -338,4 +338,6 @@
             </div>
         </div>
     </section>
+
+    @vite('resources/js/voucher.js')
 @endsection

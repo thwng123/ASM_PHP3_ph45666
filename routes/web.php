@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\VoucherController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 
@@ -103,6 +104,19 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->as('admin.')->group(funct
             Route::get('changeOrderStatus/accepted/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'accept'])->name('accept');
             Route::get('changeOrderStatus/rejected/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'reject'])->name('reject');
 
+
+        });
+
+    Route::prefix('vouchers')
+        ->as('vouchers.')
+        ->group(function () {
+            Route::get('/', [VoucherController::class, 'index'])->name('index');
+            Route::get('create', [VoucherController::class, 'create'])->name('create');
+            Route::post('store', [VoucherController::class, 'store'])->name('store');
+            // Route::get('show/{voucher}', [VoucherController::class, 'show'])->name('show');
+            // Route::get('{voucher}/edit', [VoucherController::class, 'edit'])->name('edit');
+            // Route::put('{voucher}/update', [VoucherController::class, 'update'])->name('update');
+            // Route::delete('{voucher}/destroy', [VoucherController::class, 'destroy'])->name('destroy');
 
         });
 

@@ -13,13 +13,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     @include('admin.layouts.partials.css')
-   
+
 </head>
 
 <body>
     <!-- Left Panel -->
     @include('admin.layouts.partials.aside')
-    
+
     <!-- /#left-panel -->
     <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
@@ -41,7 +41,10 @@
     <!-- /#right-panel -->
 
     <!-- Scripts -->
+   
     @include('admin.layouts.partials.js')
+    @yield('customJs')
+   
 </body>
 
 </html>

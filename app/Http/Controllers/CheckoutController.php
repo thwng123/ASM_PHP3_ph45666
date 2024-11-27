@@ -116,7 +116,14 @@ class CheckoutController extends Controller
 
                 foreach ($carts as $item) {
 
+
                     $book = Book::find($item->book_id);
+
+                    if ($book->quantity <= 0) {
+                        // Gửi thông báo cho người dùng rằng sản phẩm đã hết hàng
+                        return redirect()->back()->with('error', 'Sản phẩm ' . $book->name . ' đã hết hàng.');
+                    }
+
                     $orderItem = new OrderItem();
                     $orderItem->book_id = $item->book_id;
                     $orderItem->quantity = $item->quantity;
@@ -125,6 +132,9 @@ class CheckoutController extends Controller
 
                     $orderItem->save();
                     $item->delete();
+
+                    $book->quantity -= $item->quantity;
+                    $book->save();
                 }
             }
         }
